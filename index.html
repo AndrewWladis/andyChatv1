@@ -27,15 +27,15 @@
 </head>
 <body>
   <h1 id="logoText">Welcome To AndyChat!</h1>
-  <form action="chat.html">
+  <form>
     <label for="name">Name:</label>
     <input id="name" type="text" name="name" placeholder="Name:">
     <input id="submit" type="submit" value="Submit">
   </form>
 </body>
 <script>
-    document.getElementById('submit').onclick = function(){
-    let url = new URL("https://andychat.fly.dev//chat.html?");
+  document.getElementById('submit').onclick = function(){
+    let url = new URL("./chat.html?");
     url.searchParams.append('name', document.getElementById('name').value);
     window.location.href = url
   }
