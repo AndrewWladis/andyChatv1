@@ -32,5 +32,7 @@
     url.searchParams.append('name', document.getElementById('name').value);
     window.location.href = url
   }
+  const names = ['Kal-El', 'Walter', 'Morpheus', 'Neo', 'Red', 'Logan', 'Ace', 'Yoda', 'Rocky', 'Forrest', 'Abed', 'Cartman', 'Homer', 'Hughie', 'Wanda', 'Woody', 'Buzz', 'Sulley', 'Eve', 'Leia', 'Saul', 'Ernie', 'Ferris'];
+  document.getElementById('name').placeholder = names[Math.floor(Math.random() * names.length)];
 </script>
 </html>
