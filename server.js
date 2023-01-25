@@ -9,6 +9,9 @@ io.on('connection', socket => {
   socket.on('send-chat-message', message => {
     socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] })
   })
+  socket.on('send-andymoji', moji => {
+    socket.broadcast.emit('andymoji-message', { andimoji: moji, name: users[socket.id] })
+  })
   socket.on('disconnect', () => {
     socket.broadcast.emit('user-disconnected', users[socket.id])
     delete users[socket.id]
