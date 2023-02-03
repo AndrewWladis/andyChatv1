@@ -13,6 +13,7 @@ io.on('connection', socket => {
   })
   socket.on('send-breaking-bad-quote', message => {
     socket.broadcast.emit('chat-message', { message: customFilter.clean(message.quote), name: message.author })
+    console.log('got breaking bad quote')
   })
   socket.on('send-andymoji', moji => {
     socket.broadcast.emit('andymoji-message', { andimoji: moji, name: users[socket.id] })
