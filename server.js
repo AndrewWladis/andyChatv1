@@ -5,20 +5,30 @@ var customFilter = new Filter({ placeHolder: '💀'});
 
 io.on('connection', socket => {
   socket.on('new-user', name => {
-    users[socket.id] = name
-    socket.broadcast.emit('user-connected', name)
+    if ([undefined, null, ""].indexOf(name) != -1) {
+      users[socket.id] = name
+      socket.broadcast.emit('user-connected', name)
+    }
   })
   socket.on('send-chat-message', message => {
-    socket.broadcast.emit('chat-message', { message: customFilter.clean(message), name: users[socket.id] })
+    if ([undefined, null, ""].indexOf(users[socket.id]) != -1) {
+      socket.broadcast.emit('chat-message', { message: customFilter.clean(message), name: users[socket.id] })
+    }
   })
   socket.on('send-breaking-bad-quote', message => {
-    socket.broadcast.emit('chat-message', { message: customFilter.clean(message.quote), name: message.author })
+    if ([undefined, null, ""].indexOf(users[socket.id]) != -1) {
+      socket.broadcast.emit('chat-message', { message: customFilter.clean(message.quote), name: message.author })
+    }
   })
   socket.on('send-andymoji', moji => {
-    socket.broadcast.emit('andymoji-message', { andimoji: moji, name: users[socket.id] })
+    if ([undefined, null, ""].indexOf(users[socket.id]) != -1) {
+      socket.broadcast.emit('andymoji-message', { andimoji: moji, name: users[socket.id] })
+    }
   })
   socket.on('disconnect', () => {
-    socket.broadcast.emit('user-disconnected', users[socket.id])
+    if ([undefined, null, ""].indexOf(users[socket.id]) != -1) {
+      socket.broadcast.emit('user-disconnected', users[socket.id])
+    }
     delete users[socket.id]
   })
 })
