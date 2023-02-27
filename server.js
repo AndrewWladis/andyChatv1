@@ -6,7 +6,7 @@ let i = 0;
 
 io.on('connection', socket => {
   socket.on('new-user', name => {
-    console.log(name, i, typeof(name))
+    console.log(name, i, typeof name)
     if ([undefined, null, "null"].indexOf(name) != -1) {
       users[socket.id] = name
       socket.broadcast.emit('user-connected', name)
