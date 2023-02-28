@@ -4,6 +4,9 @@
     "socket.io": "^4.6.1"
   },
   "scripts": {
-    "devStart": "node server.js"
+    "devStart": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
