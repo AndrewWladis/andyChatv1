@@ -2,5 +2,8 @@
   "dependencies": {
     "bad-words": "^3.0.4",
     "socket.io": "^4.6.1"
+  },
+  "scripts": {
+    "devStart": "node server.js"
   }
 }
