@@ -1,4 +1,5 @@
-const io = require('socket.io')(3000)
+const io = require('socket.io')(3000);
+io.set('origins', '*:*');
 const users = {}
 var Filter = require('bad-words');
 var customFilter = new Filter({ placeHolder: '💀'});
