@@ -1,6 +1,6 @@
 const io = require("socket.io")(3000, {
   cors: {
-    origin: "https://andychat.onrender.com/socket.io/socket.io.js",
+    origin: "https://andychat.onrender.com/",
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
