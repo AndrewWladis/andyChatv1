@@ -1,11 +1,4 @@
-const io = require("socket.io")(3000, {
-  cors: {
-    origin: "https://andychat.onrender.com/",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-  }
-});
+const io = require("socket.io")(3000);
 
 const users = {}
 var Filter = require('bad-words');
