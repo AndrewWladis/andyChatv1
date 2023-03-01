@@ -10,12 +10,9 @@ io.on('connection', socket => {
     socket.broadcast.emit('user-connected', name)
   })
   socket.on('send-chat-message', message => {
-    /*if (users[socket.id] === 'Andy' && message.startsWith('BANdy ')) {
-      let user
-      io.to(users[message.split('BANdy ')[1].toLowerCase()]).emit("ban", 'ban');
-    } else {
-      socket.broadcast.emit('chat-message', { message: customFilter.clean(message), name: users[socket.id]});
-    }*/
+    if (users[socket.id] === 'Andy' && message.startsWith('BANdy ')) {
+      io.to(users[message.split(' ')[1].toLowerCase()]).emit("ban", message.split(' ')[2]);
+    }
     socket.broadcast.emit('chat-message', { message: customFilter.clean(message), name: users[socket.id]});
   })
   socket.on('send-andymoji', moji => {
