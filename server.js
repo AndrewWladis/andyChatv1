@@ -1,5 +1,4 @@
 const io = require("socket.io")(3000);
-
 const users = {}
 var Filter = require('bad-words');
 var customFilter = new Filter({ placeHolder: '💀'});
@@ -10,8 +9,8 @@ io.on('connection', socket => {
     socket.broadcast.emit('user-connected', name)
   })
   socket.on('send-chat-message', message => {
-    if (users[socket.id] === 'Andy' && message.startsWith('BANdy ')) {
-      io.to(users[message.split(' ')[1].toLowerCase()]).emit("ban", message.split(' ')[2]);
+    if (message === "jesse, we need to cook") {
+      socket.broadcast.emit('breaking-bad', 'b*tch')
     }
     socket.broadcast.emit('chat-message', { message: customFilter.clean(message), name: users[socket.id]});
   })
