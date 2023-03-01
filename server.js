@@ -9,9 +9,6 @@ io.on('connection', socket => {
     socket.broadcast.emit('user-connected', name)
   })
   socket.on('send-chat-message', message => {
-    if (message === "jesse, we need to cook") {
-      socket.broadcast.emit('breaking-bad', 'b*tch')
-    }
     socket.broadcast.emit('chat-message', { message: customFilter.clean(message), name: users[socket.id]});
   })
   socket.on('send-andymoji', moji => {
